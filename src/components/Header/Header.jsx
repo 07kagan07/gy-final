@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import logo from "../../assets/monitoLogo.png" 
+import styles from "./header.module.css"
 
 
 const Header = () => {
@@ -15,13 +16,8 @@ const Header = () => {
                 <Link to="/products">About</Link>
                 <Link to="/products">Contact</Link>
             </div>
-            <div className="input-group">
-                <input type="text" className="form-control" placeholder="Arama"/>
-                <div className="input-group-prepend">
-                    <span className="input-group-text"> 
-                    <i className="fa fa-search"></i> 
-                    </span>
-                </div>
+            <div className={styles.searchBox}>
+                <input type="text" className={styles.searchInput} placeholder="Search" />
             </div>
 
         </nav>

@@ -1,39 +1,36 @@
-import { Link } from "react-router-dom"
+import { Link,useNavigate } from "react-router-dom"
 import logo from "../../assets/monitoLogo.png" 
 import styles from "./header.module.css"
+import Button from "../Shared/Button"
 
 
 const Header = () => {
+    const navigate = useNavigate()
   return (
     <header className="py-3">
         {/* Desktop Header */}
 
-        <nav className="container justify-content-between align-items-center d-sm-none d-md-flex">
+        <nav className="container justify-content-between align-items-center d-none d-lg-flex">
             <img src={logo} alt="logo" />
-            <div className="d-flex justify-content-evenly w-100">
+            <div className="d-flex justify-content-evenly gap-5">
                 <Link to="/">Home</Link>
                 <Link to="/products">Category</Link>
                 <Link to="/products">About</Link>
                 <Link to="/products">Contact</Link>
             </div>
             <div className={styles.searchBox}>
-                <input type="text" className={styles.searchInput} placeholder="Search" />
+                <input type="text" className={styles.searchInput} placeholder="Search something here!" />
             </div>
+            <Button size="m" handleClick={()=>navigate("/login")}>Login</Button>
 
         </nav>
 
         {/* Mobile Header */}
 
-        <nav className="container d-flex justify-content-between align-items-center d-none d-sm-block d-md-none">
+        <nav className="container  justify-content-between align-items-center d-flex d-lg-none">
+            <div>Hamburger</div>
             <img src={logo} alt="logo" />
-            <div className="d-flex justify-content-evenly w-100">
-                <Link to="/">Mobil Home</Link>
-                <Link to="/products">Category</Link>
-                <Link to="/products">About</Link>
-                <Link to="/products">Contact</Link>
-            </div>
-            <div className="input-group">
-                <input type="text" className="form-control" placeholder="Arama"/>
+            <div>
                 <div className="input-group-prepend">
                     <span className="input-group-text"> 
                     <i className="fa fa-search"></i> 

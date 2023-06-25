@@ -16,7 +16,7 @@ const Button = ({
         isReverse && "flex-row-reverse"
       } btn btn-primary d-flex align-items-center gap-3 ${
         size === "L" ? "py-2 px-4" : "py-1 px-3"
-      } rounded-${rounded}`}
+      } rounded-${rounded} text-center justify-content-center`}
       onClick={handleClick}
       style={{ minWidth: "max-content" }}
     >

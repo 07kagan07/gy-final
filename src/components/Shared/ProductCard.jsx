@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const ProductCard = ({ product }) => {
   product = {
     id: 1,
@@ -16,7 +17,7 @@ const ProductCard = ({ product }) => {
 
   const starRating = (stars) => "★★★★★✩✩✩✩✩".slice(5 - stars, 10 - stars);
   return (
-    <div className="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+    <div className="col-xl-2 col-lg-3 col-md-4 col-6">
       <div
         className="d-flex flex-column w-100 rounded"
         style={{
@@ -25,18 +26,19 @@ const ProductCard = ({ product }) => {
           background: "##FDFDFD",
         }}
       >
-        <img src={image} alt="product image" className="m-2 rounded" />
+        <img src={image} alt="product image" className="m-2 rounded p-4" />
         <div>
+        <p
+              className="border rounded p-1 m-2 bg-primary text-white category"
+              style={{ maxWidth: "max-content",textTransform:'capitalize',fontSize:'0.8rem' }}
+            >
+              {category}
+            </p>
           <p className="m-2" style={{ maxWidth: "max-content" }}>
             {title}
           </p>
           <div className="d-flex justify-content-between align-items-center">
-            <p
-              className="border rounded p-1 m-2 bg-primary text-white"
-              style={{ maxWidth: "max-content" }}
-            >
-              {category}
-            </p>
+            
             <div className="d-flex align-items-center m-2 gap-2">
               <p className="m-0 text-warning">
                 {starRating(Math.round(rating.rate))}

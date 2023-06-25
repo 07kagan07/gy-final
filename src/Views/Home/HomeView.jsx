@@ -4,7 +4,7 @@ const HomeView = () => {
 
   return (
     <>      
-      <div className="row">
+      <div className="row g-3">
         <ProductCard />
         <ProductCard />
         <ProductCard />

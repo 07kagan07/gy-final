@@ -33,15 +33,21 @@ const navigate = useNavigate()
       }}
     
     >
-      {({isValid,dirty,errors})=>{
+      {({isValid,dirty})=>{
       return (
       <Form>
-        <InputField onFocus={()=>setIsUserExist("")} name="email" placeholder="Email" />
-        <ErrorMessage className='text-danger' name="email" component="small"/>
-        <InputField name="password" placeholder="Password" typeName="password" />
-        <ErrorMessage className='text-danger' name="password" component="small"/>
-        <InputField name="confirmPassword" placeholder="Confirm Password" typeName="password" />
-        <ErrorMessage className='text-danger' name="confirmPassword" component="small"/>
+        <div className='my-3'>
+          <InputField onFocus={()=>setIsUserExist("")} name="email" placeholder="Email" />
+          <ErrorMessage className='text-danger' name="email" component="small"/>
+        </div>
+        <div className='my-3'>
+          <InputField name="password" placeholder="Password" typeName="password" />
+          <ErrorMessage className='text-danger' name="password" component="small"/>
+        </div>
+        <div className='my-3'>
+          <InputField name="confirmPassword" placeholder="Confirm Password" typeName="password" />
+          <ErrorMessage className='text-danger' name="confirmPassword" component="small"/>
+        </div>
         <p className='py-2 text-center'>Already have an account? <Link to={"/login"}>Login</Link> </p>
         <div className='d-flex align-items-center justify-content-between'>
           <Button disabled={!isValid || !dirty} type='submit' isIconExist={true}>Register</Button>

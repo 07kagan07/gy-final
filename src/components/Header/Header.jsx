@@ -11,7 +11,7 @@ const Header = () => {
         {/* Desktop Header */}
 
         <nav className="container justify-content-between align-items-center d-none d-lg-flex">
-            <img src={logo} alt="logo" />
+            <img className={styles.logo} onClick={()=>navigate("/")} src={logo} alt="logo" />
             <div className="d-flex justify-content-evenly gap-5">
                 <Link to="/">Home</Link>
                 <Link to="/products">Category</Link>

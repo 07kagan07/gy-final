@@ -1,17 +1,18 @@
 /* eslint-disable no-unused-vars */
 import  {ErrorMessage, Form, Formik} from 'formik'
-import { loginSchema } from '../../schemas'
+import { registerSchema } from '../../schemas'
 import InputField from '../Shared/InputField'
 import Button from '../Shared/Button'
 import { Link } from 'react-router-dom'
 
-const Login = () => {
+const Register = () => {
   return (
     <Formik
-    validationSchema={loginSchema}
+    validationSchema={registerSchema}
     initialValues={{
       email: '',
-      password: ''
+      password: '',
+      confirmPassword: ''
     }}
     onSubmit={(values)=>console.log(values)}
     
@@ -23,8 +24,10 @@ const Login = () => {
         <ErrorMessage className='text-danger' name="email" component="small"/>
         <InputField name="password" placeholder="Password" typeName="password" />
         <ErrorMessage className='text-danger' name="password" component="small"/>
-        <p className='py-2 text-center'>Not a Member Yet? <Link to={"/register"}>Register</Link> </p>
-        <Button disabled={!isValid || !dirty} type='submit' isIconExist={true}>Login</Button>
+        <InputField name="confirmPassword" placeholder="Confirm Password" typeName="password" />
+        <ErrorMessage className='text-danger' name="confirmPassword" component="small"/>
+        <p className='py-2 text-center'>Already have an account? <Link to={"/login"}>Login</Link> </p>
+        <Button disabled={!isValid || !dirty} type='submit' isIconExist={true}>Register</Button>
       </Form> 
       )   }}
         
@@ -33,4 +36,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

@@ -7,6 +7,7 @@ const InputField = ({
   placeholder,
   label,
   isRequired = false,
+  ...props
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputType, setInputType] = useState(typeName);
@@ -30,6 +31,7 @@ const InputField = ({
       )}
       <div className="w-100 position-relative">
         <Field
+          {...props}
           name={name}
           type={inputType}
           placeholder={placeholder}

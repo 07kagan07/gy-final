@@ -16,7 +16,7 @@ const Login = () => {
     onSubmit={(values)=>console.log(values)}
     
     >
-      {({values,setFieldValue,isValid,dirty})=>{
+      {({isValid,dirty})=>{
       return (
       <Form>
         <InputField name="email" placeholder="Email" />

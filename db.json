@@ -5,13 +5,24 @@
       "email": "kagancoskun32@gmail.com",
       "password": "123456",
       "role": "admin"
+    },
+    {
+      "email": "kagancoskun32@gmail.com",
+      "password": "Kc123456",
+      "role": "user",
+      "id": "b3c2f719-3fd0-4cab-b3fc-1801100222be"
     }
   ],
   "basket": [
     {
       "id": "54c68ea2-0fec-421f-818c-8f3e98f0694e",
       "userId": "8ec9d0f8-4726-4bf9-9835-5691a0a7296e",
-      "prod": [{ "productId": 1, "quantity": 3 }]
+      "prod": [
+        {
+          "productId": 1,
+          "quantity": 3
+        }
+      ]
     }
   ],
   "products": [

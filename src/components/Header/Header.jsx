@@ -8,8 +8,8 @@ const Header = () => {
     const navigate = useNavigate()
   return (
     <header className="py-3">
+        
         {/* Desktop Header */}
-
         <nav className="container justify-content-between align-items-center d-none d-lg-flex">
             <img className={styles.logo} onClick={()=>navigate("/")} src={logo} alt="logo" />
             <div className="d-flex justify-content-evenly gap-5">
@@ -26,7 +26,6 @@ const Header = () => {
         </nav>
 
         {/* Mobile Header */}
-
         <nav className="container  justify-content-between align-items-center d-flex d-lg-none">
         <i className="fa-solid fa-bars"></i>
             <img src={logo} alt="logo" />

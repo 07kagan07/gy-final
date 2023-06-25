@@ -4,6 +4,7 @@ import { registerSchema } from '../../schemas'
 import InputField from '../Shared/InputField'
 import Button from '../Shared/Button'
 import { Link } from 'react-router-dom'
+import { register } from '../../services/userControl'
 
 const Register = () => {
   return (
@@ -14,7 +15,7 @@ const Register = () => {
       password: '',
       confirmPassword: ''
     }}
-    onSubmit={(values)=>console.log(values)}
+    onSubmit={async(values)=>await register(values)}
     
     >
       {({isValid,dirty})=>{

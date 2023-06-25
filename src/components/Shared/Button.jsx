@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 const Button = ({
   children,
   isReverse = false,

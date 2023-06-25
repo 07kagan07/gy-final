@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-/* eslint-disable react/prop-types */
 const InputField = ({ typeName, placeholder, label, isRequired = false }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputType, setInputType] = useState(typeName);

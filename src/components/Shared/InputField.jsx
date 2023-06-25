@@ -1,6 +1,7 @@
+import { Field } from "formik";
 import { useEffect, useState } from "react";
 
-const InputField = ({ typeName, placeholder, label, isRequired = false }) => {
+const InputField = ({name, typeName, placeholder, label, isRequired = false }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputType, setInputType] = useState(typeName);
 
@@ -20,7 +21,8 @@ const InputField = ({ typeName, placeholder, label, isRequired = false }) => {
         {label}
       </label>
       <div className="w-100 position-relative">
-        <input
+        <Field
+          name={name}
           type={inputType}
           placeholder={placeholder}
           required={isRequired}

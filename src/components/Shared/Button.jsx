@@ -1,4 +1,5 @@
 const Button = ({
+  type="button",
   children,
   isReverse = false,
   isIconExist = false,
@@ -8,11 +9,12 @@ const Button = ({
 }) => {
   return (
     <button
+    type={type}
       disabled={disabled}
       className={`${
         isReverse && "flex-row-reverse"
       } btn btn-primary d-flex align-items-center gap-3 ${
-        size === "L" ? "py-3 px-4" : "py-2 px-2"
+        size === "L" ? "py-2 px-4" : "py-1 px-3"
       } rounded-5`}
       onClick={handleClick}
     >

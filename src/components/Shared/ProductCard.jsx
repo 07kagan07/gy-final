@@ -37,8 +37,11 @@ const ProductCard = ({ product }) => {
             >
               {category}
             </p>
-            <div className="text-warning m-2">
-              {starRating(Math.round(rating.rate))} {rating.rate}
+            <div className="d-flex align-items-center m-2 gap-2">
+              <p className="m-0 text-warning">
+                {starRating(Math.round(rating.rate))}
+              </p>{" "}
+              <p className="m-0 text-black">{rating.rate}</p>
             </div>
           </div>
           <div className="d-flex justify-content-between align-items-center">

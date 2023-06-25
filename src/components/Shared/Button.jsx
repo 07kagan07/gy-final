@@ -1,5 +1,5 @@
 const Button = ({
-  type="button",
+  type = "button",
   children,
   isReverse = false,
   isIconExist = false,
@@ -9,7 +9,7 @@ const Button = ({
 }) => {
   return (
     <button
-    type={type}
+      type={type}
       disabled={disabled}
       className={`${
         isReverse && "flex-row-reverse"
@@ -17,6 +17,7 @@ const Button = ({
         size === "L" ? "py-2 px-4" : "py-1 px-3"
       } rounded-5`}
       onClick={handleClick}
+      style={{ minWidth: "max-content" }}
     >
       {children}
       {isIconExist && (

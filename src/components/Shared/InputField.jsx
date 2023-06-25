@@ -1,7 +1,13 @@
 import { Field } from "formik";
 import { useEffect, useState } from "react";
 
-const InputField = ({name, typeName, placeholder, label, isRequired = false }) => {
+const InputField = ({
+  name,
+  typeName,
+  placeholder,
+  label,
+  isRequired = false,
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [inputType, setInputType] = useState(typeName);
 
@@ -17,9 +23,11 @@ const InputField = ({name, typeName, placeholder, label, isRequired = false }) =
 
   return (
     <>
-      <label className="mb-3" style={{ cursor: "pointer" }} htmlFor={id}>
-        {label}
-      </label>
+      {label && (
+        <label className="mb-3" style={{ cursor: "pointer" }} htmlFor={id}>
+          {label}
+        </label>
+      )}
       <div className="w-100 position-relative">
         <Field
           name={name}

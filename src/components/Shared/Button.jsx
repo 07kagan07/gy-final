@@ -6,7 +6,7 @@ const Button = ({
   handleClick,
   size = "L",
   disabled = false,
-  rounded = "3",
+  rounded = "4",
 }) => {
   return (
     <button

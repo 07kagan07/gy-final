@@ -1,16 +1,40 @@
 {
   "users": [
     {
-      "id": "8ec9d0f8-4726-4bf9-9835-5691a0a7296e",
-      "email": "kagancoskun32@gmail.com",
-      "password": "123456",
-      "role": "admin"
-    },
-    {
       "email": "kagancoskun32@gmail.com",
       "password": "Kc123456",
       "role": "user",
       "id": "b3c2f719-3fd0-4cab-b3fc-1801100222be"
+    },
+    {
+      "email": "oruchan@gmail.com",
+      "password": "Oa.1234",
+      "role": "user",
+      "id": "63e3966f-bbb4-4438-b90a-61a5aec6a968"
+    },
+    {
+      "email": "berfin@gmail.com",
+      "password": "Ab123",
+      "role": "user",
+      "id": "a6166777-9ef3-485d-988f-588bee751f3d"
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "Admin123",
+      "role": "admin",
+      "id": "4dcf01c4-7262-4c2a-8e4b-8bdb82a7234e"
+    },
+    {
+      "email": "oruchan1@gmail.com",
+      "password": "Oa.123",
+      "role": "user",
+      "id": "dd9a9cf0-4381-41c5-a44b-0a6ac2691ef2"
+    },
+    {
+      "email": "kagan-coskun@hotmail.com",
+      "password": "Kc.123",
+      "role": "user",
+      "id": "b793ba06-cc8a-4eb4-bcf3-af31f4ef47da"
     }
   ],
   "basket": [

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { Formik } from "formik";
 import Button from "../Shared/Button";
 import InputField from "../Shared/InputField";
@@ -11,18 +12,20 @@ import youtube from "../../assets/social/YouTube-Negative.svg";
 
 const Footer = () => {
   return (
-    <div className="bg-body-secondary rounded-top-5">
+    <div className="bg-body-secondary rounded-top-5 mt-3">
       <div className="container pt-5 pb-4">
         <div className="d-flex flex-column border-bottom">
-          <div className="row g-3 justify-content-between align-items-center rounded p-4 bg-primary text-white">
+          <div className="row gap-3 justify-content-center justify-content-lg-between  rounded p-4 bg-primary text-white mx-1 mx-md-0">
             <p className="m-0 col-lg-4 col-sm-12 fs-4">
               Register now so you don't miss our programs
             </p>
-            <div className="col-lg-8 col-sm-12 row justify-content-between align-items-center gap-3 bg-body rounded p-2">   
-                <Formik>
-                  <InputField name="name" placeholder="Enter your Email" />
-                </Formik>
-              <Button size="L">Subscribe Now</Button>
+            <div className="col-lg-8 col-sm-12 row justify-content-between align-items-center gap-3 gap-md-0 bg-body rounded p-2">   
+                <div className="col-md-9 col-sm-12">
+                  <Formik>
+                    <InputField name="name" placeholder="Enter your Email" />
+                  </Formik>
+                </div>
+              <div className="col-md-3 col-sm-12 d-flex justify-content-center"><Button rounded="3" size="L">Subscribe Now</Button></div>
             </div>
           </div>
           <div className="row justify-content-between mb-5 mt-4 gap-4 gap-lg-0">

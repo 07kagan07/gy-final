@@ -28,15 +28,11 @@ const Header = () => {
         {/* Mobile Header */}
 
         <nav className="container  justify-content-between align-items-center d-flex d-lg-none">
-            <div>Hamburger</div>
+        <i className="fa-solid fa-bars"></i>
             <img src={logo} alt="logo" />
-            <div>
-                <div className="input-group-prepend">
-                    <span className="input-group-text"> 
-                    <i className="fa fa-search"></i> 
-                    </span>
-                </div>
-            </div>
+            <button className={styles.searchMobile}>
+                
+            </button>
 
         </nav>
 

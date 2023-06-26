@@ -245,6 +245,12 @@
         "password": "Ab.123"
       },
       "id": "oJ2a6dJ"
+    },
+    {
+      "email": "oruchan.asar@gmail.com",
+      "password": "adminA1",
+      "role": "user",
+      "id": "71f81207-8ed3-4582-b705-766ea34e142f"
     }
   ],
   "basket": [

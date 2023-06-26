@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styles from "./productCard.module.css";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, isSwiper = false }) => {
   const navigate = useNavigate();
 
   const { id, title, price, category, image, rating } = product;
@@ -10,7 +10,9 @@ const ProductCard = ({ product }) => {
   return (
     <div
       onClick={() => navigate(`/product/${id}`)}
-      className={`d-flex flex-column col-xl-2 col-lg-3 col-md-4 col-6 ${styles["product-card"]}`}
+      className={`d-flex flex-column col-xl-2 col-lg-3 col-md-4 col-6 ${
+        styles["product-card"]
+      } ${isSwiper && "w-100"}`}
     >
       <div
         className={`d-flex flex-column w-100 rounded ${styles["card-content"]}`}

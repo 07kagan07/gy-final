@@ -15,7 +15,7 @@ const Header = () => {
             <div className="d-flex justify-content-evenly gap-5">
                 <Link to="/">Home</Link>
                 <Link to="/products">Category</Link>
-                <Link to="/products">About</Link>
+                <Link to="/products/1">About</Link>
                 <Link to="/products">Contact</Link>
             </div>
             <div className={styles.searchBox}>

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-import { useRoutes } from "react-router-dom";
-=======
 import { Navigate, useRoutes } from "react-router-dom";
 import { useEffect, useState } from "react";
->>>>>>> 2128467 (auth)
 import HomeView from "../Views/Home/HomeView";
 import ProductsView from "../Views/Products/ProductsView";
 import ProductDetailView from "../Views/ProductDetail/ProductDetailView";

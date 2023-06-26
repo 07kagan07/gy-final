@@ -4,8 +4,10 @@ import { registerSchema } from '../../schemas'
 import InputField from '../Shared/InputField'
 import Button from '../Shared/Button'
 import { Link,useNavigate } from 'react-router-dom'
-import { register } from '../../services/userControl'
+import { register, setCookie } from '../../services/userControl'
 import { useState } from 'react'
+import { generateToken } from '../../services/jwt'
+import { ToastContainer, toast } from 'react-toastify'
 
 const Register = () => {
 const navigate = useNavigate()
@@ -22,12 +24,19 @@ const navigate = useNavigate()
     }}
     onSubmit={async(values)=> {
       try {
-        await register(values)
+        const user=await register(values)
+        const {id,email,role} = user
+        const token =await generateToken(id,email,role)
+        setCookie(token)
+        toast.success('Giriş başarıyla yapıldı!', {
+        position: toast.POSITION.BOTTOM_RIGHT})
         setTimeout(() => {
-          navigate('/')
-        }, 1000);
+          navigate("/")
+        }
+        , 2000);
         
-      } catch (error) {
+      } 
+      catch (error) {
         setIsUserExist(error.message)
       }
       }}
@@ -36,6 +45,18 @@ const navigate = useNavigate()
       {({isValid,dirty})=>{
       return (
       <Form>
+        <ToastContainer
+          position="top-right"
+          autoClose={1000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          />
         <div className='my-3'>
           <InputField onFocus={()=>setIsUserExist("")} name="email" placeholder="Email" />
           <ErrorMessage className='text-danger' name="email" component="small"/>

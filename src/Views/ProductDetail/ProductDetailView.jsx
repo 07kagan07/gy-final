@@ -62,8 +62,16 @@ const ProductDetailView = () => {
               className={styles.title}
               disabled={role !== "admin"}
             />
-            <p className={styles.category}>{product.category}</p>
-            <p>{product.description}</p>
+            <textarea
+              value={product.category}
+              className={styles.category}
+              disabled={role !== "admin"}
+            />
+            <textarea
+              value={product.description}
+              className={styles.description}
+              disabled={role !== "admin"}
+            />
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center gap-2">
                 <p className="m-0 text-warning">
@@ -72,9 +80,17 @@ const ProductDetailView = () => {
                 <p className="m-0 text-black">{product.rating.rate}</p>
               </div>
             </div>
-            <div className="d-flex justify-content-between align-items-center">
-              <p>{product.rating.count} Stock</p>
-              <p className="text-success">${product.price}</p>
+            <div className="d-flex justify-content-between align-items-center my-3">
+              <input
+                value={`${product.rating.count} Stock`}
+                className={styles.stock}
+                disabled={role !== "admin"}
+              />
+              <input
+                value={`$${product.price}`}
+                className={styles.price}
+                disabled={role !== "admin"}
+              />
             </div>
             <div className={styles["counter-wrapper"]}>
               <div className={styles.counter}>

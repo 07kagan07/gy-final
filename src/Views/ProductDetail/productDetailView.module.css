@@ -10,9 +10,14 @@
 
 .category {
   border: 1px solid #003459;
-  width: max-content;
+  width: 150px;
+  height: 40px;
+  text-align: center;
   padding: 6px 8px;
   border-radius: 12px;
+  background: transparent;
+  resize: none;
+  color: #00171f;
 }
 
 .title {
@@ -22,6 +27,28 @@
   background: transparent;
   color: #00171f;
   resize: none;
+}
+
+.description {
+  border: 0;
+  background: transparent;
+  resize: none;
+  height: 80px;
+  margin: 12px 0;
+}
+
+.stock {
+  border: 0;
+  background: transparent;
+  resize: none;
+}
+
+.price {
+  border: 0;
+  background: transparent;
+  resize: none;
+  color: #008000;
+  text-align: end;
 }
 
 .counter-wrapper {

@@ -5,6 +5,7 @@ import styles from "./productDetailView.module.css";
 import SwiperCard from "../../components/Swiper/SwiperCard";
 import Button from "../../components/Shared/Button";
 import Magnifier from "react-magnifier";
+import { useSelector } from "react-redux";
 
 const ProductDetailView = () => {
   const [product, setProduct] = useState();
@@ -12,6 +13,8 @@ const ProductDetailView = () => {
   const [count, setCount] = useState(1);
 
   const { id } = useParams();
+
+  const user = useSelector((state) => state.userInfo.userInfo);
 
   const starRating = (stars) => "★★★★★✩✩✩✩✩".slice(5 - stars, 10 - stars);
 
@@ -24,6 +27,8 @@ const ProductDetailView = () => {
       setProducts(sortedProducts);
     });
   }, [id]);
+
+  count === 0 && setCount(1);
 
   return (
     <>
@@ -71,13 +76,13 @@ const ProductDetailView = () => {
             <div className={styles["counter-wrapper"]}>
               <div className={styles.counter}>
                 <button
-                  className={styles["count-button"]}
+                  className={`${styles["count-button"]} ${styles.dec}`}
                   onClick={() => {
                     if (count > 1) {
                       setCount(count - 1);
                     }
                   }}
-                  disabled={count === 0}
+                  disabled={count <= 1}
                 >
                   -
                 </button>
@@ -87,18 +92,20 @@ const ProductDetailView = () => {
                   className={styles.input}
                   onChange={(e) =>
                     setCount(() =>
-                      e.target.value < 121 ? Number(e.target.value) : 120
+                      e.target.value < product.rating.count
+                        ? Number(e.target.value)
+                        : product.rating.count
                     )
                   }
                 />
                 <button
-                  className={styles["count-button"]}
+                  className={`${styles["count-button"]} ${styles.inc}`}
                   onClick={() => {
                     if (count < product.rating.count) {
                       setCount(count + 1);
                     }
                   }}
-                  disabled={count === 120}
+                  disabled={count === product.rating.count}
                 >
                   +
                 </button>

@@ -1,6 +1,6 @@
-import React from 'react'
 
-const BasketItem = () => {
+const BasketItem = ({basketItem}) => {
+    console.log(basketItem)
   return (
     <div>BasketItem</div>
   )

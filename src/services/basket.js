@@ -6,8 +6,8 @@ export const getBasketItems = async (id) => {
     `${import.meta.env.VITE_API_URL}/basket?userId=${id}`
   );
   const basket = await response.json();
-  const basketItems = basket[0].prod.map((item) => {
-    const productMatch = products.find(
+  const basketItems = basket[0]?.prod?.map((item) => {
+    const productMatch = products?.find(
       (product) => product.id === item.productId
     );
     return {

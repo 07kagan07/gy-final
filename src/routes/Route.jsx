@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import HomeView from "../Views/Home/HomeView";
 import ProductsView from "../Views/Products/ProductsView";
 import ProductDetailView from "../Views/ProductDetail/ProductDetailView";
@@ -7,18 +7,21 @@ import LoginView from "../Views/Login/LoginView";
 import RegisterView from "../Views/Register/RegisterView";
 import { verifyToken } from "../services/jwt";
 import { getCookie } from "../services/userControl";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser,removeUser } from "../redux/slices/userInfoSlice";
 
 const Route = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const user = useSelector((state) => state.userInfo);
+  const dispatch = useDispatch();
 
   const token = getCookie();
  
  
 useEffect(()=>{
     const checkAuth = async()=>{
-        if(!token) return setIsAuthenticated(false)
-        const auth =await verifyToken(token)
-        setIsAuthenticated(auth)
+        if(!token) return dispatch(removeUser())
+        const decodedToken =await verifyToken(token)
+        dispatch(setUser(decodedToken))
     }
 
     checkAuth()
@@ -34,19 +37,19 @@ useEffect(()=>{
     },
     {
       path: "/products",
-      element: isAuthenticated ? <ProductsView /> : <Navigate to="/login" replace />,
+      element: user.isAuthenticated ? <ProductsView /> : <Navigate to="/login" replace />,
     },
     {
       path: "/product/:id",
-      element:isAuthenticated ? <ProductDetailView /> : <Navigate to="/login" replace />,
+      element: user.isAuthenticated ? <ProductDetailView /> : <Navigate to="/login" replace />,
     },
     {
       path: "/login",
-      element:isAuthenticated ? <Navigate to="/" replace /> : <LoginView />,
+      element:user.isAuthenticated ? <Navigate to="/" replace /> : <LoginView />,
     },
     {
       path: "/register",
-      element:isAuthenticated ? <Navigate to="/" replace /> :<RegisterView />,
+      element:user.isAuthenticated ? <Navigate to="/" replace /> :<RegisterView />,
     }
   ]);
 

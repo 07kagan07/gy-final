@@ -28,8 +28,8 @@ const Login = () => {
         const {id,email,role} = user[0]
         const token =await generateToken(id,email,role)
         setCookie(token)
-        toast.success('Kayıt başarıyla yapıldı!', {
-        position: toast.POSITION.TOP_RIGHT})
+        toast.success('Giriş başarıyla yapıldı!', {
+        position: toast.POSITION.BOTTOM_RIGHT})
         setTimeout(() => {
           navigate("/")
         }

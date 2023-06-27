@@ -1,22 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  userInfo: ""
+  userInfo: null,
+  isAuthenticated: false,
 };
 
 export const userInfoSlice = createSlice({
   name: "userInfo",
   initialState,
   reducers: {
-    addTodo: (state, action) => {
-      state.todos = [...state.todos, action.payload];
+    setUser: (state, action) => {
+        state.userInfo =  action.payload;
+        state.isAuthenticated = true;
     },
-    deleteTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+    removeUser: (state) => {
+        state.userInfo = {};
+        state.isAuthenticated = false;
     },
   },
 });
 
-export const { addTodo, deleteTodo } = userInfoSlice.actions;
+
+
+
+export const { setUser, removeUser } = userInfoSlice.actions;
 
 export default userInfoSlice.reducer;

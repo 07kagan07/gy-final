@@ -27,8 +27,12 @@ export async function generateToken(id,email,role) {
       const decodedToken = token && (await jwtVerify(token, jwtSecretKey()));
       const isExpired = isTokenExpired(decodedToken);
   
-      return !isExpired;
-    } catch (error) {
+      if (isExpired) {
+        return false;
+      }
+      return decodedToken;
+    } 
+    catch (error) {
       console.error("Error while verifying token:", error);
       return false;
     }

@@ -7,9 +7,11 @@ const Button = ({
   size = "L",
   disabled = false,
   rounded = "4",
+  ...props
 }) => {
   return (
     <button
+    {...props}
       type={type}
       disabled={disabled}
       className={`${

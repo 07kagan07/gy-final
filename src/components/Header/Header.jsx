@@ -5,6 +5,7 @@ import Button from "../Shared/Button"
 import { useDispatch, useSelector } from "react-redux"
 import { removeUser } from "../../redux/slices/userInfoSlice"
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
+import { removeCookie } from "../../services/userControl"
 
 
 const Header = () => {
@@ -32,8 +33,8 @@ const Header = () => {
                 <i className="fa-solid fa-user"></i>{user?.userInfo?.payload?.email.split("@")[0]}<i className="fa-solid fa-angle-down"></i>
                 </Button>
                 <ul className="dropdown-menu w-100">
-                    <li><a className="dropdown-item d-flex justify-content-between align-items-center" href="#">Basket<span className="badge bg-danger">2</span></a></li>
-                    <li><button onClick={()=>{navigate("/");dispatch(removeUser())}} className="dropdown-item d-flex justify-content-between align-items-center" href="#">Exit<i className="fa-solid fa-right-from-bracket"></i></button></li>
+                    <li><Link className="dropdown-item d-flex justify-content-between align-items-center" to="/basket">Basket<span className="badge bg-danger">2</span></Link></li>
+                    <li><button onClick={()=>{navigate("/");dispatch(removeUser());removeCookie()}} className="dropdown-item d-flex justify-content-between align-items-center" href="#">Exit<i className="fa-solid fa-right-from-bracket"></i></button></li>
                 </ul>
             </div>}
 

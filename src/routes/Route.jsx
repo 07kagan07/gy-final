@@ -1,5 +1,5 @@
 import { Navigate, useRoutes } from "react-router-dom";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import HomeView from "../Views/Home/HomeView";
 import ProductsView from "../Views/Products/ProductsView";
 import ProductDetailView from "../Views/ProductDetail/ProductDetailView";
@@ -7,19 +7,21 @@ import LoginView from "../Views/Login/LoginView";
 import RegisterView from "../Views/Register/RegisterView";
 import { verifyToken } from "../services/jwt";
 import { getCookie } from "../services/userControl";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUser,removeUser } from "../redux/slices/userInfoSlice";
+import BasketView from "../Views/Basket/BasketView";
 
 const Route = () => {
-  const user = useSelector((state) => state.userInfo);
+  // const user = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
 
   const token = getCookie();
+  console.log(token)
  
  
-useEffect(()=>{
+  useLayoutEffect(()=>{
     const checkAuth = async()=>{
-        if(!token) return dispatch(removeUser())
+        if(!token) return dispatch(removeUser());
         const decodedToken =await verifyToken(token)
         dispatch(setUser(decodedToken))
     }
@@ -37,19 +39,23 @@ useEffect(()=>{
     },
     {
       path: "/products",
-      element: user.isAuthenticated ? <ProductsView /> : <Navigate to="/login" replace />,
+      element: token ? <ProductsView /> : <Navigate to="/login" replace />,
     },
     {
       path: "/product/:id",
-      element: user.isAuthenticated ? <ProductDetailView /> : <Navigate to="/login" replace />,
+      element: token ? <ProductDetailView /> : <Navigate to="/login" replace />,
+    },
+    {
+      path: "/basket",
+      element: token ? <BasketView /> : <Navigate to="/login" replace />,
     },
     {
       path: "/login",
-      element:user.isAuthenticated ? <Navigate to="/" replace /> : <LoginView />,
+      element:token ? <Navigate to="/" replace /> : <LoginView />,
     },
     {
       path: "/register",
-      element:user.isAuthenticated ? <Navigate to="/" replace /> :<RegisterView />,
+      element:token ? <Navigate to="/" replace /> :<RegisterView />,
     }
   ]);
 

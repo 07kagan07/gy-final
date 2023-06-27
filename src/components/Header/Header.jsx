@@ -31,9 +31,9 @@ const Header = () => {
                 <Button rounded="3" className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i className="fa-solid fa-user"></i>{user?.userInfo?.payload?.email.split("@")[0]}<i className="fa-solid fa-angle-down"></i>
                 </Button>
-                <ul className="dropdown-menu">
-                    <li><a className="dropdown-item d-flex justify-content-between" href="#">Basket<span className="badge bg-danger">2</span></a></li>
-                    <li><button onClick={()=>{navigate("/");dispatch(removeUser())}} className="dropdown-item d-flex justify-content-between" href="#">Exit<i className="fa-solid fa-right-from-bracket"></i></button></li>
+                <ul className="dropdown-menu w-100">
+                    <li><a className="dropdown-item d-flex justify-content-between align-items-center" href="#">Basket<span className="badge bg-danger">2</span></a></li>
+                    <li><button onClick={()=>{navigate("/");dispatch(removeUser())}} className="dropdown-item d-flex justify-content-between align-items-center" href="#">Exit<i className="fa-solid fa-right-from-bracket"></i></button></li>
                 </ul>
             </div>}
 

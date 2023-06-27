@@ -11,12 +11,9 @@ const [basket, setBasket] = useState([])
     getBasketItems(user.payload.id).then((res)=>setBasket(res))
   }
   ,[user])
-
-  console.log(basket)
-
   return (
     <div>
-      <input type="text" value={"ORuchan"} className="border-0" disabled={true}/>
+
     </div>
   )
 }

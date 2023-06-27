@@ -4,6 +4,7 @@ import { getAllProducts } from "../../services/requests";
 import ProductCard from "../../components/Shared/ProductCard/ProductCard";
 import { sortProducts } from "../../services/sorts";
 import Button from "../../components/Shared/Button";
+import PageBanner from "../../components/PageBanner/PageBanner";
 
 const ProductsView = () => {
   const [allProducts, setAllProducts] = useState()
@@ -80,7 +81,9 @@ const handlePriceFilter = (event) => {
           <li className="breadcrumb-item active" aria-current="page">Category</li>
         </ol>
       </nav>
-    <div className="mb-5">Banner</div>
+    <div className="mb-5">
+      <PageBanner/>
+    </div>
     <div className="row gap-4">
       <div className="col-md-2 col-sm-12 ">
         <div className="mb-2"><h4>Filter</h4></div>
@@ -115,7 +118,7 @@ const handlePriceFilter = (event) => {
        
       </div>
       <div className="col-md-9 col-sm-12 row">
-        <div className=" mb-2">
+        <div className="d-flex align-items-center justify-content-between mb-2">
           <h4>Kıyafetler</h4>
           <select onChange={(e)=>setSortType(e.target.value)} className="border border-primary rounded-4 px-3 py-0">
             <option>Sort By</option>
@@ -128,6 +131,7 @@ const handlePriceFilter = (event) => {
           </select>
         </div>
         {allProducts&&filteredProd && filteredProd.map((product)=><ProductCard key={product.id} product={product}/>)}
+        {filteredProd && filteredProd.length===0 && <h2 className="h-100">There is no product</h2>}
       </div>
     </div>
       

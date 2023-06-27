@@ -28,7 +28,7 @@ const HomeView = () => {
           </div>
         )}
         <div className="row g-3">
-          {products.map((product) => (
+          {products.slice(0,8).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
           <PageBanner />

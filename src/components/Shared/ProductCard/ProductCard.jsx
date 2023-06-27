@@ -10,9 +10,11 @@ const ProductCard = ({ product, isSwiper = false }) => {
   return (
     <div
       onClick={() => navigate(`/product/${id}`)}
-      className={`d-flex flex-column col-xl-2 col-lg-3 col-md-4 col-6 ${
+      className={`d-flex flex-column col-lg-3 col-md-4 col-6 ${
         styles["product-card"]
-      } ${isSwiper && "w-100"}`}
+      }
+       ${isSwiper && "w-100"}
+       `}
     >
       <div
         className={`d-flex flex-column w-100 rounded ${styles["card-content"]}`}

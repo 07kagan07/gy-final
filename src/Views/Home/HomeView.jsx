@@ -12,8 +12,6 @@ const HomeView = () => {
   const [products, setProducts] = useState([]);
   const [isLoad, setIsLoad] = useState(true);
 
-  console.log("slm");
-
   useEffect(() => {
     getAllProducts()
       .then((res) => setProducts(res))

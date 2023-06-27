@@ -7,7 +7,7 @@
   background-position: 10px center;
   background-size: 20px 20px;
   align-items: center;
-  border: 1px solid #003459;
+  /* border: 1px solid #003459; */
   border-radius: 46px;
 
 }
@@ -17,7 +17,7 @@
     height: 100%;
     padding:12px 35px;
     border: none;
-    background-color: transparent;
+    background-color: #fff;
     outline: none;
     font-size: 16px;
     border-radius: 46px;

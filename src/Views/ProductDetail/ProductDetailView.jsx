@@ -16,6 +16,8 @@ const ProductDetailView = () => {
 
   const user = useSelector((state) => state.userInfo.userInfo);
 
+  const role = user?.payload?.role;
+
   const starRating = (stars) => "★★★★★✩✩✩✩✩".slice(5 - stars, 10 - stars);
 
   useEffect(() => {
@@ -27,9 +29,6 @@ const ProductDetailView = () => {
       setProducts(sortedProducts);
     });
   }, [id]);
-
-  count === 0 && setCount(1);
-
   return (
     <>
       {product && (
@@ -58,7 +57,11 @@ const ProductDetailView = () => {
                 </li>
               </ol>
             </nav>
-            <h4 className="mb-3">{product.title}</h4>
+            <textarea
+              value={product.title}
+              className={styles.title}
+              disabled={role !== "admin"}
+            />
             <p className={styles.category}>{product.category}</p>
             <p>{product.description}</p>
             <div className="d-flex justify-content-between align-items-center">
@@ -90,13 +93,12 @@ const ProductDetailView = () => {
                   type="number"
                   value={count}
                   className={styles.input}
-                  onChange={(e) =>
-                    setCount(() =>
-                      e.target.value < product.rating.count
-                        ? Number(e.target.value)
-                        : product.rating.count
-                    )
-                  }
+                  onChange={(e) => setCount(Number(e.target.value))}
+                  onBlur={() => {
+                    count <= 1 && setCount(1);
+                    count >= product.rating.count &&
+                      setCount(product.rating.count);
+                  }}
                 />
                 <button
                   className={`${styles["count-button"]} ${styles.inc}`}

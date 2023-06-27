@@ -1,9 +1,9 @@
 
 const BasketItem = ({basketItem}) => {
+  
+   
     console.log(basketItem)
-  return (
-    <div>BasketItem</div>
-  )
+    return <div>{basketItem.product.title} ${basketItem.product.price*basketItem.quantity}</div>;
 }
 
-export default BasketItem
+export default BasketItem;

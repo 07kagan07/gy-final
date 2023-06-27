@@ -4,7 +4,6 @@ import { getAllProducts } from "../../services/requests";
 import ProductCard from "../../components/Shared/ProductCard/ProductCard";
 import { sortProducts } from "../../services/sorts";
 import Button from "../../components/Shared/Button";
-import Banner from "../../components/Banner/Banner";
 
 const ProductsView = () => {
   const [allProducts, setAllProducts] = useState()

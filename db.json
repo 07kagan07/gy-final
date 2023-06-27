@@ -41,6 +41,12 @@
       "password": "Kc123",
       "role": "user",
       "id": "50123d3d-a6bb-4ba0-8923-e9670113d6aa"
+    },
+    {
+      "email": "berfinozcan435@gmail.com",
+      "password": "Berfin1234",
+      "role": "user",
+      "id": "b85df91e-01ba-45fa-9b4d-f44d7ca8d2c5"
     }
   ],
   "basket": [

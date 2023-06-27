@@ -4,6 +4,7 @@ import { getAllProducts } from "../../services/requests";
 import ProductCard from "../../components/Shared/ProductCard/ProductCard";
 import { sortProducts } from "../../services/sorts";
 import Button from "../../components/Shared/Button";
+import Banner from "../../components/Banner/Banner";
 
 const ProductsView = () => {
   const [allProducts, setAllProducts] = useState()
@@ -12,6 +13,7 @@ const ProductsView = () => {
   const [categories, setCategories] = useState()
   const [sortType, setSortType] = useState(null)
   const [priceFilter, setPriceFilter] = useState({min:null,max:null})
+  
 
 useEffect(()=>{
   const inital = async()=>{
@@ -33,7 +35,7 @@ useEffect(()=>{
   }
   filterProducts()
 }
-,[filter,allProducts])
+,[filter,allProducts,priceFilter])
 
 useEffect(()=>{
   if(sortType) {
@@ -58,7 +60,16 @@ const handlePriceFilter = (event) => {
   event.preventDefault();
   console.log(priceFilter)
   if(priceFilter.min==="" && priceFilter.max==="") return setFilteredProd(filteredProd)
-  const filtered = filteredProd.filter((product)=>product.price>=priceFilter.min && product.price<=priceFilter.max)
+  let filtered;
+  if(priceFilter.min && !priceFilter.max){
+    filtered = filteredProd.filter((product)=>product.price>=priceFilter.min)
+  }
+  if(priceFilter.max && !priceFilter.min){
+    filtered = filteredProd.filter((product)=>product.price<=priceFilter.max)
+  }
+  if(priceFilter.min && priceFilter.max){
+    filtered = filteredProd.filter((product)=>product.price>=priceFilter.min && product.price<=priceFilter.max)
+  }
   setFilteredProd(filtered)
 };
 

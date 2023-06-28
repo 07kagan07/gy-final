@@ -43,6 +43,16 @@ const ProductDetailView = () => {
     }
   };
 
+  const handleNestedInputChange = (field, subfield, value) => {
+    setEditableProduct((prev) => ({
+      ...prev,
+      [field]: { ...prev[field], [subfield]: value },
+    }));
+    if (!changesMade) {
+      setChangesMade(true);
+    }
+  };
+
   const handleSave = async () => {
     await updateProduct(id, editableProduct);
     setProduct(editableProduct);
@@ -113,7 +123,9 @@ const ProductDetailView = () => {
                   value={editableProduct.rating.count}
                   className={styles.stock}
                   disabled={role !== "admin"}
-                  onChange={(e) => handleInputChange("count", e.target.value)}
+                  onChange={(e) =>
+                    handleNestedInputChange("rating", "count", e.target.value)
+                  }
                 />
                 <p className="m-0"> Stock</p>
               </div>

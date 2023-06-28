@@ -66,11 +66,11 @@
       "prod": [
         {
           "productId": 1,
-          "quantity": 3
+          "quantity": 7
         },
         {
           "productId": 3,
-          "quantity": 1
+          "quantity": 5
         }
       ]
     }

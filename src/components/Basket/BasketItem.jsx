@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styles from "./basketItem.module.css"
 import Button from "../Shared/Button";
+import { updateItemQuantity } from "../../services/basket";
+import { useSelector } from "react-redux";
 
-const BasketItem = ({basketItem}) => {
+const BasketItem = ({basketItem,setFlag}) => {
+    const user = useSelector((state) => state.userInfo.userInfo);
     const [count, setCount] = useState(basketItem.quantity)
   
-    useEffect(()=>{
-        console.log(count)
-    },[count])
+    const handleCountChange =async () => {
+        await updateItemQuantity(user?.payload?.id, basketItem.product.id, count)
+        setFlag(true)
+    }
+    
+   
     
    
     console.log(basketItem)
@@ -20,6 +26,7 @@ const BasketItem = ({basketItem}) => {
                     onClick={() => {
                         if (count > 1) {
                         setCount(count - 1);
+                        handleCountChange()
                         }
                     }}
                     disabled={count <= 1}
@@ -30,11 +37,12 @@ const BasketItem = ({basketItem}) => {
                     type="number"
                     value={count}
                     className={styles.input}
-                    onChange={(e) => setCount(Number(e.target.value))}
+                    onChange={(e) => {setCount(Number(e.target.value));handleCountChange()}}
                     onBlur={() => {
                         count <= 1 && setCount(1);
                         count >= basketItem.product.rating.count &&
                         setCount(basketItem.product.rating.count);
+                        handleCountChange();
                     }}
                     />
                     <button
@@ -42,6 +50,7 @@ const BasketItem = ({basketItem}) => {
                     onClick={() => {
                         if (count < basketItem.product.rating.count) {
                         setCount(count + 1);
+                        handleCountChange();
                         }
                     }}
                     disabled={count === basketItem.product.rating.count}
@@ -56,7 +65,7 @@ const BasketItem = ({basketItem}) => {
                     <Button className="btn btn-danger"><i className="fa-solid fa-trash"></i></Button>
                     </div>
                 <div className="d-flex justify-content-end align-items-end flex-column">
-                    <h6>${basketItem.quantity*basketItem.product.price}</h6>
+                    <h6>${count*basketItem.product.price}</h6>
                 </div>
             </div>
 

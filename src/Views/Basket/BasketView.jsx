@@ -6,13 +6,14 @@ import BasketItem from "../../components/Basket/BasketItem";
 const BasketView = () => {
   const user = useSelector((state) => state.userInfo.userInfo);
   const [basket, setBasket] = useState([])
+  const [flag, setFlag] = useState(false)
   const [basketTotalPrice, setBasketTotalPrice] = useState(0)
 
 
   useEffect(()=>{
-    getBasketItems(user?.payload?.id).then((res)=>setBasket(res))
+    getBasketItems(user?.payload?.id).then((res)=>setBasket(res)).then(()=>setFlag(false))
   }
-  ,[user])
+  ,[user,flag])
 
   useEffect(() => {
     const totalPrice = basket?.reduce((total, item) => {
@@ -20,8 +21,9 @@ const BasketView = () => {
     }, 0);
 
     setBasketTotalPrice(totalPrice);
+    setFlag(false)
   }
-  , [basket])
+  , [basket,flag])
   return (
     <div>
       {!basket&&<h2>Empty Basket</h2>}
@@ -33,6 +35,7 @@ const BasketView = () => {
           setBasketTotalPrice={setBasketTotalPrice}
           basketItem={basketItem}
           basketTotalPrice={basketTotalPrice}
+          setFlag={setFlag}
           />)}
         </div>
         <div className="col-lg-4 col-sm-12">${basketTotalPrice?.toLocaleString()}</div>

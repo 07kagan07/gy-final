@@ -41,6 +41,7 @@
   border: 0;
   background: transparent;
   resize: none;
+  width: 42px;
 }
 
 .price {
@@ -49,6 +50,7 @@
   resize: none;
   color: #008000;
   text-align: end;
+  width: 42px;
 }
 
 .counter-wrapper {
@@ -98,4 +100,17 @@
   border-right: none;
   border-top: 1px solid #003459;
   border-bottom: 1px solid #003459;
+}
+
+.save {
+  border: 1px solid black;
+  background: #28a745;
+  color: white;
+  width: 100%;
+  border-radius: 12px;
+  transition: all 0.3s ease-out;
+}
+
+.save:hover {
+  background: #1f8637;
 }

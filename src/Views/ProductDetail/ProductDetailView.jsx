@@ -11,6 +11,7 @@ const ProductDetailView = () => {
   const [product, setProduct] = useState();
   const [products, setProducts] = useState();
   const [count, setCount] = useState(1);
+  const [changesMade, setChangesMade] = useState(false);
 
   const { id } = useParams();
 
@@ -29,6 +30,13 @@ const ProductDetailView = () => {
       setProducts(sortedProducts);
     });
   }, [id]);
+
+  const handleInputChange = () => {
+    if (!changesMade) {
+      setChangesMade(true);
+    }
+  };
+
   return (
     <>
       {product && (
@@ -61,16 +69,19 @@ const ProductDetailView = () => {
               value={product.title}
               className={styles.title}
               disabled={role !== "admin"}
+              onChange={handleInputChange}
             />
             <textarea
               value={product.category}
               className={styles.category}
               disabled={role !== "admin"}
+              onChange={handleInputChange}
             />
             <textarea
               value={product.description}
               className={styles.description}
               disabled={role !== "admin"}
+              onChange={handleInputChange}
             />
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center gap-2">
@@ -81,16 +92,24 @@ const ProductDetailView = () => {
               </div>
             </div>
             <div className="d-flex justify-content-between align-items-center my-3">
-              <input
-                value={`${product.rating.count} Stock`}
-                className={styles.stock}
-                disabled={role !== "admin"}
-              />
-              <input
-                value={`$${product.price}`}
-                className={styles.price}
-                disabled={role !== "admin"}
-              />
+              <div className="d-flex">
+                <input
+                  value={product.rating.count}
+                  className={styles.stock}
+                  disabled={role !== "admin"}
+                  onChange={handleInputChange}
+                />
+                <p className="m-0"> Stock</p>
+              </div>
+              <div className="d-flex align-items-center text-success">
+                <p className="m-0">$</p>
+                <input
+                  value={product.price}
+                  className={styles.price}
+                  disabled={role !== "admin"}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
             <div className={styles["counter-wrapper"]}>
               <div className={styles.counter}>
@@ -129,6 +148,14 @@ const ProductDetailView = () => {
                 </button>
               </div>
               <Button>Add to Basket</Button>
+              {changesMade && (
+                <button
+                  className={styles.save}
+                  onClick={() => setChangesMade(false)}
+                >
+                  Save
+                </button>
+              )}
             </div>
           </div>
         </div>

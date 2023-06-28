@@ -12,11 +12,9 @@ import { setUser,removeUser } from "../redux/slices/userInfoSlice";
 import BasketView from "../Views/Basket/BasketView";
 
 const Route = () => {
-  // const user = useSelector((state) => state.userInfo);
   const dispatch = useDispatch();
 
   const token = getCookie();
-  console.log(token)
  
  
   useLayoutEffect(()=>{

@@ -6,9 +6,11 @@ import SwiperCard from "../../components/Swiper/SwiperCard";
 import Button from "../../components/Shared/Button";
 import Magnifier from "react-magnifier";
 import { useSelector } from "react-redux";
+import { updateProduct } from "../../services/requests";
 
 const ProductDetailView = () => {
   const [product, setProduct] = useState();
+  const [editableProduct, setEditableProduct] = useState(product);
   const [products, setProducts] = useState();
   const [count, setCount] = useState(1);
   const [changesMade, setChangesMade] = useState(false);
@@ -22,7 +24,10 @@ const ProductDetailView = () => {
   const starRating = (stars) => "★★★★★✩✩✩✩✩".slice(5 - stars, 10 - stars);
 
   useEffect(() => {
-    getProductById(id).then((res) => setProduct(res));
+    getProductById(id).then((res) => {
+      setProduct(res);
+      setEditableProduct({ ...res });
+    });
     getAllProducts().then((res) => {
       const sortedProducts = res.sort(function (a, b) {
         return Math.random() - 0.5;
@@ -31,13 +36,16 @@ const ProductDetailView = () => {
     });
   }, [id]);
 
-  const handleInputChange = () => {
+  const handleInputChange = (field, value) => {
+    setEditableProduct((prev) => ({ ...prev, [field]: value }));
     if (!changesMade) {
       setChangesMade(true);
     }
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
+    await updateProduct(id, editableProduct);
+    setProduct(editableProduct);
     setChangesMade(false);
   };
 
@@ -74,22 +82,22 @@ const ProductDetailView = () => {
               </ol>
             </nav>
             <textarea
-              value={product.title}
+              value={editableProduct.title}
               className={styles.title}
               disabled={role !== "admin"}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange("title", e.target.value)}
             />
             <textarea
-              value={product.category}
+              value={editableProduct.category}
               className={styles.category}
               disabled={role !== "admin"}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange("category", e.target.value)}
             />
             <textarea
-              value={product.description}
+              value={editableProduct.description}
               className={styles.description}
               disabled={role !== "admin"}
-              onChange={handleInputChange}
+              onChange={(e) => handleInputChange("description", e.target.value)}
             />
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex align-items-center gap-2">
@@ -102,20 +110,20 @@ const ProductDetailView = () => {
             <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex">
                 <input
-                  value={product.rating.count}
+                  value={editableProduct.rating.count}
                   className={styles.stock}
                   disabled={role !== "admin"}
-                  onChange={handleInputChange}
+                  onChange={(e) => handleInputChange("count", e.target.value)}
                 />
                 <p className="m-0"> Stock</p>
               </div>
               <div className="d-flex align-items-center text-success">
                 <p className="m-0">$</p>
                 <input
-                  value={product.price}
+                  value={editableProduct.price}
                   className={styles.price}
                   disabled={role !== "admin"}
-                  onChange={handleInputChange}
+                  onChange={(e) => handleInputChange("price", e.target.value)}
                 />
               </div>
             </div>

@@ -37,18 +37,26 @@ const ProductDetailView = () => {
     }
   };
 
+  const handleSave = () => {
+    setChangesMade(false);
+  };
+
   return (
     <>
       {product && (
         <div className={`row mt-lg-3 mt-0 ${styles.detailWrap} p-0 p-lg-5`}>
-          <div className="col-lg-6 col-sm-12 px-1 px-lg-5">
+          <div
+            className="col-lg-6 col-sm-12 px-1 px-lg-5"
+            style={{ maxHeight: "500px" }}
+          >
             <Magnifier
               src={product.image}
               width="100%"
+              style={{ maxHeight: "500px" }}
               className="img-fluid rounded-0 rounded-lg-3 px-0 px-lg-5"
             />
           </div>
-          <div className="d-flex flex-column justify-content-between col-lg-6 col-sm-12 py-2 py-lg-0">
+          <div className="d-flex flex-column justify-content-between col-lg-6 col-sm-12 py-2 py-lg-0 gap-3 gap-lg-3">
             <nav aria-label="breadcrumb">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
@@ -91,7 +99,7 @@ const ProductDetailView = () => {
                 <p className="m-0 text-black">{product.rating.rate}</p>
               </div>
             </div>
-            <div className="d-flex justify-content-between align-items-center my-3">
+            <div className="d-flex justify-content-between align-items-center">
               <div className="d-flex">
                 <input
                   value={product.rating.count}
@@ -149,10 +157,7 @@ const ProductDetailView = () => {
               </div>
               <Button>Add to Basket</Button>
               {changesMade && (
-                <button
-                  className={styles.save}
-                  onClick={() => setChangesMade(false)}
-                >
+                <button className={styles.save} onClick={handleSave}>
                   Save
                 </button>
               )}

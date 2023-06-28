@@ -70,7 +70,11 @@
         },
         {
           "productId": 3,
-          "quantity": 5
+          "quantity": 2
+        },
+        {
+          "productId": 5,
+          "quantity": 4
         }
       ]
     }

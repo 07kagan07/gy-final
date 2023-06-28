@@ -70,8 +70,7 @@ export const removeItemFromBasket = async (userId, productId) => {
     }
   );
 
-  const updatedBasketResponse = await updateResponse.json();
-  return updatedBasketResponse;
+  return await updateResponse.json();
 };
 
 export const updateItemQuantity = async (userId, productId, quantity) => {
@@ -104,7 +103,30 @@ export const updateItemQuantity = async (userId, productId, quantity) => {
 
   const updatedBasketResponse = await updateResponse.json();
   return updatedBasketResponse;
-};
+}
+
+export const deleteById = async (userId, productId) => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/basket?userId=${userId}`
+    );
+    const basket = await response.json();
+  
+    const updatedBasket = basket[0].prod.filter(item => item.productId !== productId);
+  
+    const updateResponse = await fetch(
+      `${import.meta.env.VITE_API_URL}/basket/${basket[0].id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prod: updatedBasket }),
+      }
+    );
+  
+    return await updateResponse.json();
+  };
+  
 
 export const clearBasket = async (userId) => {
   const response = await fetch(
@@ -136,8 +158,7 @@ export const createBasket = async (userId) => {
     body: JSON.stringify({ userId: userId, prod: [] }),
   });
 
-  const basket = await response.json();
-  return basket;
+  return await response.json();
 };
 
 

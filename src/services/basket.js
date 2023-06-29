@@ -1,5 +1,17 @@
 import { getAllProducts } from "./requests";
 
+export const createBasket = async (userId) => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/basket`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({id:self.crypto.randomUUID(), userId: userId, prod: [] }),
+    });
+  
+    return await response.json();
+  };
+
 export const getBasketItems = async (id) => {
   const products = await getAllProducts();
   const response = await fetch(
@@ -28,11 +40,24 @@ export const addItemToBasket = async (userId, newProduct) => {
     (item) => item.productId === newProduct.productId
   );
 
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/products/${newProduct.productId}`
+  );
+  const stock = await res.json();
+
   if (existingProduct) {
-    existingProduct.quantity += newProduct.quantity;
-  } else {
+    if (existingProduct.quantity + newProduct.quantity > stock.rating.count) {
+        existingProduct.quantity = stock.rating.count;
+        return "Maximum stock reached, maximum stock quantity added to your cart"
+    }
+    else{
+        existingProduct.quantity += newProduct.quantity;
+    }
+  } 
+  else {
     basket[0].prod.push(newProduct);
   }
+
 
   const updateResponse = await fetch(
     `${import.meta.env.VITE_API_URL}/basket/${basket[0].id}`,
@@ -149,16 +174,57 @@ export const clearBasket = async (userId) => {
   return updatedBasketResponse;
 };
 
-export const createBasket = async (userId) => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/basket`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ userId: userId, prod: [] }),
-  });
-
-  return await response.json();
-};
-
-
+export const checkout = async (userId) => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/basket?userId=${userId}`
+    );
+    const basket = await response.json();
+  
+    const stockDrop = async (productId, quantity) => {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/products/${productId}`
+      );
+      const product = await res.json();
+      const newStock = product.rating.count - quantity;
+      if (newStock < 0 || product.rating.count === 0) {
+        return `Not enough stock for product: ${product.title}`;
+      }
+      await fetch(
+        `${import.meta.env.VITE_API_URL}/products/${productId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ rating: { count: newStock } }),
+        }
+      );
+      return null;
+    };
+  
+    let errorMessages = [];
+    for (let item of basket[0].prod) {
+      const errorMessage = await stockDrop(item.productId, item.quantity);
+      if (errorMessage) {
+        errorMessages.push(errorMessage);
+      }
+    }
+  
+    const removeBasket = await fetch(
+      `${import.meta.env.VITE_API_URL}/basket/${basket[0].id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prod: [] }),
+      }
+    );
+  
+    return { 
+      success: errorMessages.length === 0, 
+      basket: await removeBasket.json(),
+      messages: errorMessages,
+    };
+  };
+  

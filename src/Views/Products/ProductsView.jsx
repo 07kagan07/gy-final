@@ -58,7 +58,6 @@ const handleChange = (event) => {
 
 const handlePriceFilter = (event) => {
   event.preventDefault();
-  console.log(priceFilter)
   if(priceFilter.min==="" && priceFilter.max==="") return setFilteredProd(filteredProd)
   let filtered;
   if(priceFilter.min && !priceFilter.max){

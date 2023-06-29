@@ -8,6 +8,7 @@ import { register, setCookie } from '../../services/userControl'
 import { useState } from 'react'
 import { generateToken } from '../../services/jwt'
 import { ToastContainer, toast } from 'react-toastify'
+import { createBasket } from '../../services/basket'
 
 const Register = () => {
 const navigate = useNavigate()
@@ -30,6 +31,7 @@ const navigate = useNavigate()
         setCookie(token)
         toast.success('Giriş başarıyla yapıldı!', {
         position: toast.POSITION.BOTTOM_RIGHT})
+        createBasket(id)
         setTimeout(() => {
           navigate("/")
         }

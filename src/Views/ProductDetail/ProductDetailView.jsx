@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getAllProducts, getProductById } from "../../services/requests";
@@ -7,6 +8,8 @@ import Button from "../../components/Shared/Button";
 import Magnifier from "react-magnifier";
 import { useSelector } from "react-redux";
 import { updateProduct } from "../../services/requests";
+import { addItemToBasket } from "../../services/basket";
+import { toast,ToastContainer  } from 'react-toastify';
 
 const ProductDetailView = () => {
   const [product, setProduct] = useState();
@@ -57,12 +60,18 @@ const ProductDetailView = () => {
     await updateProduct(id, editableProduct);
     setProduct(editableProduct);
     setChangesMade(false);
+  }
+  
+  const addToBasket = async() => {
+    const add =await addItemToBasket(user?.payload?.id, {productId:product.id,quantity:count})
+    typeof add === "string" && toast.error(add)
   };
 
   return (
     <>
       {product && (
         <div className={`row mt-lg-3 mt-0 ${styles.detailWrap} p-0 p-lg-5`}>
+          <ToastContainer/>
           <div
             className="col-lg-6 col-sm-12 px-1 px-lg-5"
             style={{ maxHeight: "500px" }}
@@ -170,12 +179,12 @@ const ProductDetailView = () => {
                       setCount(count + 1);
                     }
                   }}
-                  disabled={count === product.rating.count}
+                  disabled={count >= product.rating.count}
                 >
                   +
                 </button>
               </div>
-              <Button>Add to Basket</Button>
+              <Button handleClick={addToBasket} disabled={product.rating.count === 0 || count > product.rating.count }>Add to Basket</Button>
               {changesMade && (
                 <button className={styles.save} onClick={handleSave}>
                   Save

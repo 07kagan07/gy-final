@@ -1,95 +1,41 @@
 {
   "users": [
     {
-      "email": "kagancoskun32@gmail.com",
-      "password": "Kc123456",
-      "role": "user",
-      "id": "b3c2f719-3fd0-4cab-b3fc-1801100222be"
-    },
-    {
-      "email": "oruchan@gmail.com",
-      "password": "Oa.1234",
-      "role": "user",
-      "id": "63e3966f-bbb4-4438-b90a-61a5aec6a968"
-    },
-    {
-      "email": "berfin@gmail.com",
-      "password": "Ab123",
-      "role": "user",
-      "id": "a6166777-9ef3-485d-988f-588bee751f3d"
-    },
-    {
       "email": "admin@gmail.com",
       "password": "Admin123",
       "role": "admin",
-      "id": "4dcf01c4-7262-4c2a-8e4b-8bdb82a7234e"
+      "id": "b343a0df-fa43-4a1b-acbd-a9c2f5bd4bd6"
     },
     {
-      "email": "oruchan1@gmail.com",
-      "password": "Oa.123",
+      "email": "kagancoskun32@gmail.com",
+      "password": "Kc1234",
       "role": "user",
-      "id": "dd9a9cf0-4381-41c5-a44b-0a6ac2691ef2"
-    },
-    {
-      "email": "kagan-coskun@hotmail.com",
-      "password": "Kc.123",
-      "role": "user",
-      "id": "b793ba06-cc8a-4eb4-bcf3-af31f4ef47da"
-    },
-    {
-      "email": "asd@asd.com",
-      "password": "Kc123",
-      "role": "user",
-      "id": "50123d3d-a6bb-4ba0-8923-e9670113d6aa"
-    },
-    {
-      "email": "berfinozcan435@gmail.com",
-      "password": "Berfin1234",
-      "role": "user",
-      "id": "b85df91e-01ba-45fa-9b4d-f44d7ca8d2c5"
+      "id": "2022dcc2-1fd7-4745-bece-2199c90710d4"
     }
   ],
   "basket": [
     {
-      "id": "54c68ea2-0fec-421f-818c-8f3e98f0694e",
-      "userId": "8ec9d0f8-4726-4bf9-9835-5691a0a7296e",
-      "prod": [
-        {
-          "productId": 1,
-          "quantity": 3
-        }
-      ]
+      "id": "05086d91-091c-487a-9528-cd49147fec87",
+      "userId": "b343a0df-fa43-4a1b-acbd-a9c2f5bd4bd6",
+      "prod": []
     },
     {
-      "id": "55c68ea2-0fec-421f-818c-8f3e98f0694e",
-      "userId": "4dcf01c4-7262-4c2a-8e4b-8bdb82a7234e",
-      "prod": [
-        {
-          "productId": 1,
-          "quantity": 7
-        },
-        {
-          "productId": 3,
-          "quantity": 2
-        },
-        {
-          "productId": 5,
-          "quantity": 4
-        }
-      ]
+      "id": "5e1a2daa-1864-4638-94bb-8389f09e461a",
+      "userId": "2022dcc2-1fd7-4745-bece-2199c90710d4",
+      "prod": []
     }
   ],
   "products": [
     {
       "id": 1,
-      "title": "Fjallraven - Foldsack No. 1 Basdfasdfasdfackpack, Fits 15 Laptopsffa",
+      "title": "Fjallraven - Foldsack No. 1 Baskpack, Fits 15 Laptop",
       "price": 109.95,
       "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everydayfd",
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "rating": {
-        "rate": 3.9,
-        "count": "1200"
+        "count": 0,
+        "rate": 3.2
       }
     },
     {
@@ -101,7 +47,7 @@
       "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
       "rating": {
         "rate": 4.1,
-        "count": 259
+        "count": "2"
       }
     },
     {
@@ -112,8 +58,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
       "rating": {
-        "rate": 4.7,
-        "count": 500
+        "count": 0
       }
     },
     {
@@ -124,8 +69,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "rating": {
-        "rate": 2.1,
-        "count": 430
+        "count": 425
       }
     },
     {
@@ -148,8 +92,7 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "rate": 3.9,
-        "count": 70
+        "count": 0
       }
     },
     {
@@ -160,8 +103,7 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "rate": 3,
-        "count": 400
+        "count": 385
       }
     },
     {

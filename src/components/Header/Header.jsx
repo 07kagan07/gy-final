@@ -25,7 +25,7 @@ const Header = () => {
                 <Link to="/products">Contact</Link>
             </div>
             <div className={styles.searchBox}>
-                <input type="text" className={styles.searchInput} placeholder="Search something here!" />
+                <input onFocus={()=>navigate("/products")} type="text" className={styles.searchInput} placeholder="Search something here!" />
             </div>
             {!user.isAuthenticated &&<Button size="m" handleClick={()=>navigate("/login")}>Login</Button>}
             {user.isAuthenticated &&<div className="dropdown">

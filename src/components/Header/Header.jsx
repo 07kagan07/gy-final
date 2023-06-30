@@ -44,14 +44,69 @@ const Header = () => {
         </nav>
 
         {/* Mobile Header */}
-        <nav className="container  justify-content-between align-items-center d-flex d-lg-none">
-            <i className="fa-solid fa-bars"></i>
-            <img src={logo} alt="logo" />
-            <button className={styles.searchMobile}>
-                
-            </button>
 
-        </nav>
+        <nav className="navbar navbar-expand-lg navbar-light d-flex d-lg-none">
+                <div className="container-fluid">
+                    <button 
+                        className={`navbar-toggler shadow-none border-0`} 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#hamburger" 
+                        aria-controls="hamburger" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation"
+                    >
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <img onClick={()=>navigate("/")} src={logo} alt="logo" />
+                    <button className={`navbar-toggler shadow-none  ${styles.searchMobile}`} 
+                        type="button" 
+                        data-bs-toggle="collapse" 
+                        data-bs-target="#search" 
+                        aria-controls="search" 
+                        aria-expanded="false" 
+                        aria-label="Toggle navigation"></button>
+                    <div className="collapse navbar-collapse" id="hamburger">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item">
+                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/products">Category</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/product/1">About</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/products">Contact</Link>
+                            </li>
+                            {!user.isAuthenticated && 
+                                <li className="nav-item">
+                                    <Button size="m" handleClick={()=>navigate("/login")}>Login</Button>
+                                </li>
+                            }
+                            {user.isAuthenticated &&
+                                <li className="nav-item dropdown">
+                                    <Button rounded="3" className="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i className="fa-solid fa-user"></i>{user?.userInfo?.payload?.email.split("@")[0]}<i className="fa-solid fa-angle-down"></i>
+                                    </Button>
+                                    <ul className="dropdown-menu w-100">
+                                        <li><Link className="dropdown-item d-flex justify-content-between align-items-center" to="/basket">Basket<span className="badge bg-danger">{basketCount}</span></Link></li>
+                                        <li><button onClick={()=>{navigate("/");dispatch(removeUser());removeCookie()}} className="dropdown-item d-flex justify-content-between align-items-center" href="#">Exit<i className="fa-solid fa-right-from-bracket"></i></button></li>
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div className="collapse navbar-collapse" id="search">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                                <input onChange={(e)=>dispatch(setSearch(e.target.value))} onFocus={()=>navigate("/products")} type="text" className={styles.searchInput} placeholder="Search something here!" />
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
         
     </header>

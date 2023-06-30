@@ -41,14 +41,16 @@ const BasketItem = ({basketItem, setFlag}) => {
                   onChange={(e) => {
                       const newCount = Number(e.target.value);
                       setCount(newCount);
-                      handleCountChange(newCount);
+                    //   handleCountChange(newCount);
                   }}
-                  onBlur={() => {
-                      if(count <= 1) setCount(1);
-                      if(count >= basketItem?.product?.rating?.count) {
+                  onBlur={(e) => {
+                    const newCount = Number(e.target.value);
+                      if(newCount <= 1) setCount(1);
+                      if(newCount >= basketItem?.product?.rating?.count) {
                           setCount(basketItem?.product?.rating?.count);
+                          return handleCountChange(basketItem?.product?.rating?.count);
                       }
-                      handleCountChange(count);
+                      handleCountChange(newCount);
                   }}
                   />
                   <button
@@ -73,7 +75,7 @@ const BasketItem = ({basketItem, setFlag}) => {
           </div>
           <div className="col-lg-1 d-flex flex-column justify-content-between">
           <button onClick={handleDelete} className="btn btn-danger"><i className="fa-solid fa-trash"></i></button>
-          <h4>${(count * basketItem?.product?.price).toLocaleString()}</h4>
+          <h5>${(count * basketItem?.product?.price).toLocaleString()}</h5>
           </div>
       </div>
     );

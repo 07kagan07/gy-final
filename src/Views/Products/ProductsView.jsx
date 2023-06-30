@@ -108,35 +108,38 @@ const handlePriceFilter = (event) => {
       <PageBanner/>
     </div>}
     <div className="row gap-4">
+        <button className="btn btn-primary d-md-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">Filters <i className="fa-solid fa-angle-down"></i></button>
       <div className="col-md-2 col-sm-12 ">
-        <div className="mb-2"><h4>Filter</h4></div>
-        <hr />
-        <div>
-          <h6 className="text-primary">Category</h6>
-          {categories && categories.map((category)=>
-          <div key={category} className="form-check">
-          <input onChange={handleChange}   className="form-check-input" type="checkbox" value={category} id={category}/>
-          <label className="form-check-label capitalizeLetter" htmlFor={category}>
-            {category}
-          </label>
-        </div>) }
-        </div>
-        <hr />
-        <div>
-          <h6 className="text-primary">Price</h6>
-          <form onSubmit={handlePriceFilter}>
-            <div className="input-group mb-3 row g-1 mt-2">
-            <div className="col-6 text-center">
-              <label htmlFor="Min">Min</label>
-              <input onChange={(e)=>setPriceFilter({...priceFilter,min:e.target.value})} type="number" className="form-control" aria-label="Amount (to the nearest dollar)"/>
-            </div>
-            <div className="col-6 text-center">
-            <label htmlFor="Max">Max</label>
-              <input onChange={(e)=>setPriceFilter({...priceFilter,max:e.target.value})} type="number" className="form-control" aria-label="Amount (to the nearest dollar)"/>
-            </div>
-            <Button type="submit">Search Price</Button>
+        <div id="filterCollapse" className="collapse d-md-block">
+          <div className="mb-2"><h4>Filter</h4></div>
+          <hr />
+          <div>
+            <h6 className="text-primary">Category</h6>
+            {categories && categories.map((category)=>
+            <div key={category} className="form-check">
+            <input onChange={handleChange}   className="form-check-input" type="checkbox" value={category} id={category}/>
+            <label className="form-check-label capitalizeLetter" htmlFor={category}>
+              {category}
+            </label>
+          </div>) }
           </div>
-          </form>
+          <hr />
+          <div>
+            <h6 className="text-primary">Price</h6>
+            <form onSubmit={handlePriceFilter}>
+              <div className="input-group mb-3 row g-1 mt-2">
+              <div className="col-6 text-center">
+                <label htmlFor="Min">Min</label>
+                <input onChange={(e)=>setPriceFilter({...priceFilter,min:e.target.value})} type="number" className="form-control" aria-label="Amount (to the nearest dollar)"/>
+              </div>
+              <div className="col-6 text-center">
+              <label htmlFor="Max">Max</label>
+                <input onChange={(e)=>setPriceFilter({...priceFilter,max:e.target.value})} type="number" className="form-control" aria-label="Amount (to the nearest dollar)"/>
+              </div>
+              <Button type="submit">Search Price</Button>
+            </div>
+            </form>
+          </div>
         </div>
        
       </div>

@@ -6,10 +6,11 @@ import styles from "./productDetailView.module.css";
 import SwiperCard from "../../components/Swiper/SwiperCard";
 import Button from "../../components/Shared/Button";
 import Magnifier from "react-magnifier";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateProduct } from "../../services/requests";
-import { addItemToBasket } from "../../services/basket";
+import { addItemToBasket, getBasketLenght } from "../../services/basket";
 import { toast,ToastContainer  } from 'react-toastify';
+import { setBasketCount } from "../../redux/slices/basketCountSlice";
 
 const ProductDetailView = () => {
   const [product, setProduct] = useState();
@@ -21,6 +22,7 @@ const ProductDetailView = () => {
   const { id } = useParams();
 
   const user = useSelector((state) => state.userInfo.userInfo);
+  const dispatch = useDispatch();
 
   const role = user?.payload?.role;
 
@@ -64,7 +66,11 @@ const ProductDetailView = () => {
   
   const addToBasket = async() => {
     const add =await addItemToBasket(user?.payload?.id, {productId:product.id,quantity:count})
-    typeof add === "string" && toast.error(add)
+    typeof add === "string" ? toast.error(add):toast.success("Product added to basket")
+    getBasketLenght(user?.payload?.id).then((res) => {
+      dispatch(setBasketCount(res));
+    }
+    );
   };
 
   return (
@@ -136,7 +142,7 @@ const ProductDetailView = () => {
                     handleNestedInputChange("rating", "count", e.target.value)
                   }
                 />
-                <p className="m-0"> Stock</p>
+                <p className={`m-0 ${editableProduct.rating.count===0&&"text-danger"}`}>{editableProduct.rating.count===0&&"Out of"} Stock</p>
               </div>
               <div className="d-flex align-items-center text-success">
                 <p className="m-0">$</p>

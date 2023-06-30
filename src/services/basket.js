@@ -196,7 +196,7 @@ export const checkout = async (userId) => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ rating: { count: newStock } }),
+          body: JSON.stringify({ rating: { count: newStock,rate:product.rating.rate } }),
         }
       );
       return null;
@@ -226,5 +226,14 @@ export const checkout = async (userId) => {
       basket: await removeBasket.json(),
       messages: errorMessages,
     };
+  }
+  
+  export const getBasketLenght = async (userId) => {
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/basket?userId=${userId}`
+    );
+    const basket = await response.json();
+    const basketLenght =await basket[0].prod?.length;
+    return basketLenght;
   };
   

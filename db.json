@@ -17,7 +17,12 @@
     {
       "id": "05086d91-091c-487a-9528-cd49147fec87",
       "userId": "b343a0df-fa43-4a1b-acbd-a9c2f5bd4bd6",
-      "prod": []
+      "prod": [
+        {
+          "productId": 1,
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": "5e1a2daa-1864-4638-94bb-8389f09e461a",
@@ -34,8 +39,8 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "rating": {
-        "count": 0,
-        "rate": 3.2
+        "count": "1",
+        "rate": 3.9
       }
     },
     {
@@ -46,8 +51,8 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
       "rating": {
-        "rate": 4.1,
-        "count": "2"
+        "count": 0,
+        "rate": 4.1
       }
     },
     {
@@ -58,7 +63,8 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
       "rating": {
-        "count": 0
+        "count": 0,
+        "rate": 4.7
       }
     },
     {
@@ -69,7 +75,8 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "rating": {
-        "count": 425
+        "count": 422,
+        "rate": 2.1
       }
     },
     {
@@ -80,8 +87,8 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "rate": 4.6,
-        "count": 400
+        "count": 0,
+        "rate": 4.6
       }
     },
     {
@@ -92,7 +99,8 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "count": 0
+        "count": 0,
+        "rate": 3.9
       }
     },
     {
@@ -103,7 +111,8 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "count": 385
+        "count": 385,
+        "rate": 3.7
       }
     },
     {
@@ -114,8 +123,8 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "rate": 1.9,
-        "count": 100
+        "count": 96,
+        "rate": 4.7
       }
     },
     {
@@ -198,8 +207,8 @@
       "category": "women's clothing",
       "image": "https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",
       "rating": {
-        "rate": 2.6,
-        "count": 235
+        "count": 232,
+        "rate": 2.6
       }
     },
     {

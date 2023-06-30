@@ -13,7 +13,7 @@ const ProductCard = ({ product, isSwiper = false }) => {
       className={`d-flex flex-column col-lg-3 col-md-4 col-6 ${
         styles["product-card"]
       }
-       ${isSwiper && "w-100"}
+       ${isSwiper && "w-100"} ${rating.count===0&&"opacity-50"}
        `}
     >
       <div
@@ -40,7 +40,7 @@ const ProductCard = ({ product, isSwiper = false }) => {
             </div>
           </div>
           <div className="d-flex justify-content-between align-items-center">
-            <p className="m-2">{rating.count} Stock</p>
+            <p className={`m-2 ${rating.count===0&&"text-danger"}`}>{rating.count} Stock</p>
             <p className="m-2">${price}</p>
           </div>
         </div>

@@ -6,12 +6,15 @@ import { useDispatch, useSelector } from "react-redux"
 import { removeUser } from "../../redux/slices/userInfoSlice"
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle"
 import { removeCookie } from "../../services/userControl"
+import { setSearch } from "../../redux/slices/searchSlice"
 
 
 const Header = () => {
     const user = useSelector((state) => state.userInfo);
+    const basketCount = useSelector((state) => state.basketCount.basketCount);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+
   return (
     <header className="py-3">
         
@@ -25,7 +28,7 @@ const Header = () => {
                 <Link to="/products">Contact</Link>
             </div>
             <div className={styles.searchBox}>
-                <input onFocus={()=>navigate("/products")} type="text" className={styles.searchInput} placeholder="Search something here!" />
+                <input onChange={(e)=>dispatch(setSearch(e.target.value))} onFocus={()=>navigate("/products")} type="text" className={styles.searchInput} placeholder="Search something here!" />
             </div>
             {!user.isAuthenticated &&<Button size="m" handleClick={()=>navigate("/login")}>Login</Button>}
             {user.isAuthenticated &&<div className="dropdown">
@@ -33,7 +36,7 @@ const Header = () => {
                 <i className="fa-solid fa-user"></i>{user?.userInfo?.payload?.email.split("@")[0]}<i className="fa-solid fa-angle-down"></i>
                 </Button>
                 <ul className="dropdown-menu w-100">
-                    <li><Link className="dropdown-item d-flex justify-content-between align-items-center" to="/basket">Basket<span className="badge bg-danger">2</span></Link></li>
+                    <li><Link className="dropdown-item d-flex justify-content-between align-items-center" to="/basket">Basket<span className="badge bg-danger">{basketCount}</span></Link></li>
                     <li><button onClick={()=>{navigate("/");dispatch(removeUser());removeCookie()}} className="dropdown-item d-flex justify-content-between align-items-center" href="#">Exit<i className="fa-solid fa-right-from-bracket"></i></button></li>
                 </ul>
             </div>}

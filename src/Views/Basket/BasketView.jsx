@@ -1,20 +1,23 @@
 import { useEffect, useState } from "react"
 import { checkout, getBasketItems } from "../../services/basket"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BasketItem from "../../components/Basket/BasketItem";
 import Button from "../../components/Shared/Button";
 import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { setBasketCount } from "../../redux/slices/basketCountSlice";
 
 const BasketView = () => {
   const user = useSelector((state) => state.userInfo.userInfo);
+  const dispatch = useDispatch();
   const [basket, setBasket] = useState([])
   const [flag, setFlag] = useState(false)
   const [basketTotalPrice, setBasketTotalPrice] = useState(0)
 
 
   useEffect(()=>{
-    getBasketItems(user?.payload?.id).then((res)=>setBasket(res)).then(()=>setFlag(false))
+    getBasketItems(user?.payload?.id).then((res)=>{setBasket(res);dispatch(setBasketCount(res?.length))}).then(()=>setFlag(false))
+    
   }
   ,[user,flag])
 
@@ -37,6 +40,7 @@ const order =async ()=>{
   }
   toast.success("Payment Successfuly Done")
   setBasket([])
+  setFlag(true)
 
 }
 

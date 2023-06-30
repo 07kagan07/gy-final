@@ -5,10 +5,12 @@ import ProductCard from "../../components/Shared/ProductCard/ProductCard";
 import { sortProducts } from "../../services/sorts";
 import Button from "../../components/Shared/Button";
 import PageBanner from "../../components/PageBanner/PageBanner";
+import { useSelector } from "react-redux";
 
 const ProductsView = () => {
-  const [allProducts, setAllProducts] = useState()
-  const [filteredProd, setFilteredProd] = useState()
+  const search = useSelector((state) => state.search.search);
+  const [allProducts, setAllProducts] = useState([])
+  const [filteredProd, setFilteredProd] = useState([])
   const [filter, setFilter] = useState([])
   const [categories, setCategories] = useState()
   const [sortType, setSortType] = useState(null)
@@ -29,13 +31,35 @@ inital()
 
 useEffect(()=>{
   const filterProducts = () =>{
-    if(filter.length===0) return setFilteredProd(allProducts)
-    const filtered = allProducts.filter((product)=>filter.includes(product.category))
+    let filtered = [...allProducts]
+    if(filter.length===0 && !search && search === '' && !priceFilter.max && !priceFilter.min) return setFilteredProd(allProducts)
+    if(filter.length>0) filtered = allProducts.filter((product)=>filter.includes(product.category))
+
+    if(search && search !== ''){
+      console.log(search)
+      filtered = [...filtered].filter((product)=>product.title.toLowerCase().includes(search?.toLowerCase()))
+    }
+    if(priceFilter.min || priceFilter.max){
+      if(priceFilter.min && !priceFilter.max){
+        filtered = filtered.filter((product)=>product.price>=priceFilter.min)
+      }
+      if(priceFilter.max && !priceFilter.min){
+        filtered = filtered.filter((product)=>product.price<=priceFilter.max)
+      }
+      if(priceFilter.min && priceFilter.max){
+        filtered = filtered.filter((product)=>product.price>=priceFilter.min && product.price<=priceFilter.max)
+      }
+    }
+
+
     setFilteredProd(filtered)
   }
+
+  
   filterProducts()
 }
-,[filter,allProducts,priceFilter])
+,[filter,allProducts,priceFilter,search])
+
 
 useEffect(()=>{
   if(sortType) {
@@ -57,7 +81,7 @@ const handleChange = (event) => {
 
 
 const handlePriceFilter = (event) => {
-  event.preventDefault();
+  event?.preventDefault();
   if(priceFilter.min==="" && priceFilter.max==="") return setFilteredProd(filteredProd)
   let filtered;
   if(priceFilter.min && !priceFilter.max){
@@ -80,9 +104,9 @@ const handlePriceFilter = (event) => {
           <li className="breadcrumb-item active" aria-current="page">Category</li>
         </ol>
       </nav>
-    <div className="mb-5">
+   {!search?.length>0&& <div className="mb-5">
       <PageBanner/>
-    </div>
+    </div>}
     <div className="row gap-4">
       <div className="col-md-2 col-sm-12 ">
         <div className="mb-2"><h4>Filter</h4></div>

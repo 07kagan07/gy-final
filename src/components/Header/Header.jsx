@@ -66,18 +66,18 @@ const Header = () => {
                         aria-controls="search" 
                         aria-expanded="false" 
                         aria-label="Toggle navigation"></button>
-                    <div className="collapse navbar-collapse" id="hamburger">
-                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
+                    <div className="collapse navbar-collapse bg-light  rounded-5" id="hamburger">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0 p-3">
+                            <li className="nav-item border-bottom">
                                 <Link className="nav-link active" aria-current="page" to="/">Home</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item border-bottom">
                                 <Link className="nav-link" to="/products">Category</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item border-bottom">
                                 <Link className="nav-link" to="/product/1">About</Link>
                             </li>
-                            <li className="nav-item">
+                            <li className="nav-item ">
                                 <Link className="nav-link" to="/products">Contact</Link>
                             </li>
                             {!user.isAuthenticated && 

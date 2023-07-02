@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import Button from "../Shared/Button";
 import InputField from "../Shared/InputField";
 import { Link } from "react-router-dom";
+import styles from "./footer.module.css"
 
 import logo from "../../assets/monitoLogo.png";
 import facebook from "../../assets/social/Facebook-Negative.svg";
@@ -12,7 +13,7 @@ import youtube from "../../assets/social/YouTube-Negative.svg";
 
 const Footer = () => {
   return (
-    <div className="bg-body-secondary rounded-top-5 mt-3">
+    <div className={`rounded-top-5 mt-3 ${styles.footerBg}`}>
       <div className="container pt-5 pb-4">
         <div className="d-flex flex-column border-bottom">
           <div className="row gap-3 justify-content-center justify-content-lg-between  rounded p-4 bg-primary text-white mx-1 mx-md-0">

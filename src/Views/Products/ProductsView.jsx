@@ -108,8 +108,8 @@ const handlePriceFilter = (event) => {
       <PageBanner/>
     </div>}
     <div className="row gap-4">
-        <button className="btn btn-primary d-md-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">Filters <i className="fa-solid fa-angle-down"></i></button>
       <div className="col-md-2 col-sm-12 ">
+        <button className="fs-4 border-0 bg-transparent d-md-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse"><i className="fa-solid fa-filter"></i>Filter</button>
         <div id="filterCollapse" className="collapse d-md-block">
           <div className="mb-2"><h4>Filter</h4></div>
           <hr />

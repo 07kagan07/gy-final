@@ -17,16 +17,7 @@
     {
       "id": "05086d91-091c-487a-9528-cd49147fec87",
       "userId": "b343a0df-fa43-4a1b-acbd-a9c2f5bd4bd6",
-      "prod": [
-        {
-          "productId": 1,
-          "quantity": "1"
-        },
-        {
-          "productId": 4,
-          "quantity": 422
-        }
-      ]
+      "prod": []
     },
     {
       "id": "5e1a2daa-1864-4638-94bb-8389f09e461a",
@@ -43,7 +34,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "rating": {
-        "count": "1",
+        "count": 0,
         "rate": 3.9
       }
     },
@@ -79,7 +70,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "rating": {
-        "count": 422,
+        "count": 0,
         "rate": 2.1
       }
     },

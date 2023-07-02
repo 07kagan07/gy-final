@@ -24,8 +24,8 @@ const Header = () => {
             <div className="d-flex justify-content-evenly gap-5">
                 <Link to="/">Home</Link>
                 <Link to="/products">Category</Link>
-                <Link to="/product/1">About</Link>
-                <Link to="/products">Contact</Link>
+                <Link to="/">About</Link>
+                <Link to="/">Contact</Link>
             </div>
             <div className={styles.searchBox}>
                 <input onChange={(e)=>dispatch(setSearch(e.target.value))} onFocus={()=>navigate("/products")} type="text" className={styles.searchInput} placeholder="Search something here!" />
@@ -75,10 +75,10 @@ const Header = () => {
                                 <Link className="nav-link" to="/products">Category</Link>
                             </li>
                             <li className="nav-item border-bottom">
-                                <Link className="nav-link" to="/product/1">About</Link>
+                                <Link className="nav-link" to="/">About</Link>
                             </li>
                             <li className="nav-item ">
-                                <Link className="nav-link" to="/products">Contact</Link>
+                                <Link className="nav-link" to="/">Contact</Link>
                             </li>
                             {!user.isAuthenticated && 
                                 <li className="nav-item">

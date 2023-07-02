@@ -39,7 +39,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       "rating": {
-        "count": 0,
+        "count": "5",
         "rate": 3.9
       }
     },
@@ -51,7 +51,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
       "rating": {
-        "count": 0,
+        "count": "2",
         "rate": 4.1
       }
     },
@@ -63,7 +63,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
       "rating": {
-        "count": 0,
+        "count": "25",
         "rate": 4.7
       }
     },
@@ -75,7 +75,7 @@
       "category": "men's clothing",
       "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
       "rating": {
-        "count": 0,
+        "count": "50",
         "rate": 2.1
       }
     },

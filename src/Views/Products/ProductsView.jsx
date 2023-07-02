@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { getAllProducts } from "../../services/requests";
 import ProductCard from "../../components/Shared/ProductCard/ProductCard";
 import { sortProducts } from "../../services/sorts";
-import Button from "../../components/Shared/Button";
 import PageBanner from "../../components/PageBanner/PageBanner";
 import { useSelector } from "react-redux";
 
@@ -107,7 +106,7 @@ const handlePriceFilter = (event) => {
    {!search?.length>0&& <div className="mb-5">
       <PageBanner/>
     </div>}
-    <div className="row gap-4">
+    <div className="row gap-4 justify-content-center justify-content-lg-left">
       <div className="col-md-2 col-sm-12 ">
         <button className="fs-4 border-0 bg-transparent d-md-none mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse"><i className="fa-solid fa-filter"></i>Filter</button>
         <div id="filterCollapse" className="collapse d-md-block">
@@ -136,7 +135,6 @@ const handlePriceFilter = (event) => {
               <label htmlFor="Max">Max</label>
                 <input onChange={(e)=>setPriceFilter({...priceFilter,max:e.target.value})} type="number" className="form-control" aria-label="Amount (to the nearest dollar)"/>
               </div>
-              <Button type="submit">Search Price</Button>
             </div>
             </form>
           </div>

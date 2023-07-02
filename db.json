@@ -17,7 +17,12 @@
     {
       "id": "05086d91-091c-487a-9528-cd49147fec87",
       "userId": "b343a0df-fa43-4a1b-acbd-a9c2f5bd4bd6",
-      "prod": []
+      "prod": [
+        {
+          "productId": 7,
+          "quantity": "4"
+        }
+      ]
     },
     {
       "id": "5e1a2daa-1864-4638-94bb-8389f09e461a",
@@ -106,7 +111,7 @@
       "category": "jewelery",
       "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
       "rating": {
-        "count": 385,
+        "count": "4",
         "rate": 3.7
       }
     },

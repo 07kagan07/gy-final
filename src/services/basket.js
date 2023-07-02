@@ -31,6 +31,9 @@ export const getBasketItems = async (id) => {
 };
 
 export const addItemToBasket = async (userId, newProduct) => {
+  let error;
+
+
   const response = await fetch(
     `${import.meta.env.VITE_API_URL}/basket?userId=${userId}`
   );
@@ -48,7 +51,7 @@ export const addItemToBasket = async (userId, newProduct) => {
   if (existingProduct) {
     if (existingProduct.quantity + newProduct.quantity > stock.rating.count) {
         existingProduct.quantity = stock.rating.count;
-        return "Maximum stock reached, maximum stock quantity added to your cart"
+        error = "Maximum stock reached, maximum stock quantity added to your cart"
     }
     else{
         existingProduct.quantity += newProduct.quantity;
@@ -71,7 +74,7 @@ export const addItemToBasket = async (userId, newProduct) => {
   );
 
   const updatedBasket = await updateResponse.json();
-  return updatedBasket;
+  return error?error:updatedBasket;
 };
 
 export const removeItemFromBasket = async (userId, productId) => {
